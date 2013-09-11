@@ -58,6 +58,10 @@
     [self.tableView setBackgroundView:tablebgView];
     [self updateNavigationButtons];
 
+    
+    //AUIW Styling
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -175,8 +179,8 @@
                 NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RouteDetailTitleCell" owner:self options:nil];
                 cell = [nib objectAtIndex:0];
             }
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.backgroundColor = [Utilities cellBackgroundColor];
             cell.routeImage.image = [UIImage imageWithData:[FileUtilities imageDataForRoute:route]];
             cell.routeTitleLabel.text = [route GHname];
             cell.routeHighlightsLabel.text = [route GHdescription];
@@ -188,8 +192,9 @@
         {
 
             UITableViewCell *cell = cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ButtonCell"];
-            cell.selectionStyle = UITableViewCellEditingStyleNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+            cell.backgroundColor = [Utilities cellBackgroundColor];
 
             
             //button with gradient
@@ -211,6 +216,7 @@
             startHikeCellButton.layer.masksToBounds = YES;
             
             [startHikeCellButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
+            startHikeCellButton.tintColor = [Utilities buttonTextColor];
             if([route GHwaypoints]){
                 if([[route objectForKey:@"update_available"] boolValue] == YES)
                 {
@@ -238,7 +244,10 @@
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-                       
+            
+            cell.backgroundColor = [Utilities cellBackgroundColor];
+            cell.textLabel.textColor = [Utilities appColor];
+            
             NSDictionary *waypoint = [[[AppState sharedInstance] waypointsWithCheckinsForRoute:[[route objectForKey:@"id"] integerValue]] objectAtIndex:indexPath.row];
             
             if([[waypoint objectForKey:@"visited"] boolValue] == YES) {
@@ -248,7 +257,6 @@
             }
             else{
                 cell.imageView.image = [UIImage imageNamed:@"target"];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
 
             NSDictionary *wpNameLocales = [waypoint objectForKey:@"name"];

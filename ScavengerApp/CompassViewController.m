@@ -261,7 +261,6 @@
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
-    
 }
 
 - (void)viewDidLoad

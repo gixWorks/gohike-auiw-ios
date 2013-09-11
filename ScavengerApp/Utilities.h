@@ -21,5 +21,7 @@
 + (NSNumber*)formattedNumberFromDate:(NSDate*)date;
 + (void)clearDownloadedData;
 + (UIColor*)appColor;
++ (UIColor*)cellBackgroundColor;
++ (UIColor*)buttonTextColor;
 
 @end

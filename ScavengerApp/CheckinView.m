@@ -41,7 +41,7 @@
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.adjustsFontSizeToFitWidth = YES;
         titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.textColor = [Utilities buttonTextColor];
         titleLabel.font = titleFont;
         [self addSubview:titleLabel];
         

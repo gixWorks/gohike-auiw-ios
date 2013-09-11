@@ -12,7 +12,7 @@
 #import "AFNetworking.h"
 #import "SSKeychain.h"
 #import <AdSupport/AdSupport.h>
-#import "CitySelectionViewController.h"
+
 #import "CannotPlayViewController.h"
 #import "CatalogViewController.h"
 #import "SIAlertView.h"
@@ -52,6 +52,7 @@
     //Set SIAlertView appearance
     UIColor *color = [Utilities appColor];
     [[SIAlertView appearance] setMessageFont:[UIFont systemFontOfSize:14]];
+    [[SIAlertView appearance] setBackgroundColor:[UIColor darkGrayColor]];
     [[SIAlertView appearance] setTitleColor:color];
     [[SIAlertView appearance] setMessageColor:color];
     [[SIAlertView appearance] setCornerRadius:12];
@@ -117,6 +118,7 @@
     [[AppState sharedInstance] startLocationServices];
     
 
+    NSDictionary *amsterdam = @{@"name":@"Amsterdam", @"id": @1, @"state_province":@"NH", @"country_code": @"NL"};
     // Restore game state
     [[AppState sharedInstance] restore];
 #if DEBUG
@@ -126,31 +128,33 @@
         
         // We were in compass view when we quit, we restore the navigation controller and reopen the compass view
 
-        CitySelectionViewController *cityVC = [[CitySelectionViewController alloc] initWithStyle:UITableViewStyleGrouped];
+
         CatalogViewController *catalogVC = [[CatalogViewController alloc] initWithNibName:@"CatalogViewController" bundle:nil];
         RouteStartViewController *rvc = [[RouteStartViewController alloc] initWithStyle:UITableViewStyleGrouped];
 //        rvc.route = [[AppState sharedInstance] currentRoute];
         CompassViewController *cvc = [[CompassViewController alloc] initWithNibName:@"CompassViewController" bundle:nil];
-        self.navigationController = [[UINavigationController alloc] initWithRootViewController:cityVC];
-        [self.navigationController pushViewController:catalogVC animated:NO];
+        self.navigationController = [[UINavigationController alloc] initWithRootViewController:catalogVC];
         [self.navigationController pushViewController:rvc animated:NO];
         [self.navigationController pushViewController:cvc animated:NO];
         
     }
     else{
+
+        [[AppState sharedInstance] setCurrentCity:amsterdam];
         // We were not in compass view, so first we have to check if the user has a selected city
         if([[AppState sharedInstance] currentCity] != nil){
             //if the city is not nil, means the player is already in game
-            CitySelectionViewController *cityVC = [[CitySelectionViewController alloc] initWithStyle:UITableViewStyleGrouped];
+
             CatalogViewController *catalogVC = [[CatalogViewController alloc] initWithNibName:@"CatalogViewController" bundle:nil];
-            self.navigationController = [[UINavigationController alloc] initWithRootViewController:cityVC];
-            [self.navigationController pushViewController:catalogVC animated:NO];
+            self.navigationController = [[UINavigationController alloc] initWithRootViewController:catalogVC];
+
 
         }
         else{
             //player has to select a city
-            CitySelectionViewController *cvc = [[CitySelectionViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            self.navigationController = [[UINavigationController alloc] initWithRootViewController:cvc];
+            //should never be here for AUIW
+//            CitySelectionViewController *cvc = [[CitySelectionViewController alloc] initWithStyle:UITableViewStyleGrouped];
+//            self.navigationController = [[UINavigationController alloc] initWithRootViewController:cvc];
         }
     }
 

@@ -94,7 +94,17 @@
 + (UIColor*)appColor
 {
     //The "main color" for the app
-    return [UIColor colorWithRed:0.386 green:0.720 blue:0.834 alpha:1.000];
+    return [UIColor whiteColor];
+}
+
++ (UIColor*)cellBackgroundColor
+{
+    return [UIColor clearColor];
+}
+
++ (UIColor*)buttonTextColor
+{
+    return [UIColor blackColor];
 }
 
 @end

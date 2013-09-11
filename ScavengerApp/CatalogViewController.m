@@ -93,12 +93,7 @@
 
 - (void)updateNavigationButtons
 {
-    CustomBarButtonViewLeft *backButton = [[CustomBarButtonViewLeft alloc] initWithFrame:CGRectMake(0, 0, 32, 32)
-                                                                               imageName:@"icon-back"
-                                                                                    text:NSLocalizedString(@"Cities", @"Cities")
-                                                                                  target:self
-                                                                                  action:@selector(onBackButton)];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    //TODO: here the Settings button?
     
     CustomBarButtonViewLeft *helpButton = [[CustomBarButtonViewLeft alloc] initWithFrame:CGRectMake(0, 0, 32, 32)
                                                                                imageName:@"help2"
