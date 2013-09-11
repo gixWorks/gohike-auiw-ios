@@ -177,6 +177,9 @@
         });
         
         headerView.headerBackgroundImage.image  = [[UIImage imageNamed:@"collectionviewheader"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch];
+        headerView.headerBackgroundImage.layer.cornerRadius = 6;
+        headerView.headerBackgroundImage.layer.masksToBounds = YES;
+
         
         reusableview = headerView;
     }

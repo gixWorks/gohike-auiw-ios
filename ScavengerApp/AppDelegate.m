@@ -52,7 +52,7 @@
     //Set SIAlertView appearance
     UIColor *color = [Utilities appColor];
     [[SIAlertView appearance] setMessageFont:[UIFont systemFontOfSize:14]];
-    [[SIAlertView appearance] setBackgroundColor:[UIColor darkGrayColor]];
+    [[SIAlertView appearance] setViewBackgroundColor:[UIColor blackColor]];
     [[SIAlertView appearance] setTitleColor:color];
     [[SIAlertView appearance] setMessageColor:color];
     [[SIAlertView appearance] setCornerRadius:12];

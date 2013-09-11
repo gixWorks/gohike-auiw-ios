@@ -91,7 +91,8 @@ static CGFloat ImageHeight  = 300.0;
     
     CGRect bounds = self.view.bounds;
     
-    _imageScroller.frame        = CGRectMake(0.0, 0.0, bounds.size.width, bounds.size.height);
+    _imageScroller.frame        = CGRectMake(0.0, 20.0, bounds.size.width, bounds.size.height);
+//    UIView *tablebgView = [[[NSBundle mainBundle] loadNibNamed:@"TableBackground" owner:self options:nil] objectAtIndex:0];
     _tableView.backgroundView   = nil;
     _tableView.frame            = bounds;
     
@@ -102,12 +103,11 @@ static CGFloat ImageHeight  = 300.0;
 
 #pragma mark - original 
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    //Customize buttons in nav bar
     [self customizeButtons];
     
     //set the background
@@ -121,12 +121,7 @@ static CGFloat ImageHeight  = 300.0;
     //TextView Height
     TextViewHeight = 200.0;
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-//    [self.tableView registerClass:[LocationDetailPictureCell class] forCellReuseIdentifier:PictureCellIdentifier];
-//    [self.tableView registerClass:[LocationDetailTitleCell class] forCellReuseIdentifier:TitleCellIdentifier];
-//    [self.tableView registerClass:[LocationDetailBodyCell class] forCellReuseIdentifier:BodyCellIdentifier];
-    
+        //prepare the cell nibs
     [_tableView registerNib:[UINib nibWithNibName:@"LocationDetailPictureCell" bundle:nil] forCellReuseIdentifier:PictureCellIdentifier];
     [_tableView registerNib:[UINib nibWithNibName:@"LocationDetailTitleCell" bundle:nil] forCellReuseIdentifier:TitleCellIdentifier];
     [_tableView registerNib:[UINib nibWithNibName:@"LocationDetailBodyCell" bundle:nil] forCellReuseIdentifier:BodyCellIdentifier];
@@ -214,21 +209,14 @@ static CGFloat ImageHeight  = 300.0;
         }
     } else {
         switch (indexPath.row) {
-//            case 0:
-//            {
-//                LocationDetailPictureCell *cell = [tableView dequeueReusableCellWithIdentifier:PictureCellIdentifier forIndexPath:indexPath];
-////                cell.imageView.image = [UIImage imageWithData:[FileUtilities imageDataForWaypoint:_location]];
-////                cell.backgroundColor = [UIColor clearColor];
-//                return cell;
-//                
-//            }
-//                break;
+
             case 0:
             {
                 LocationDetailTitleCell *cell = (LocationDetailTitleCell*)[tableView dequeueReusableCellWithIdentifier:TitleCellIdentifier forIndexPath:indexPath];
-                cell.contentView.backgroundColor = [UIColor whiteColor];
+                cell.contentView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
                 cell.titleLabel.text = [_location GHname];
                 cell.selectionStyle              = UITableViewCellSelectionStyleNone;
+
 
                 return cell;
             }

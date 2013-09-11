@@ -41,7 +41,6 @@
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.adjustsFontSizeToFitWidth = YES;
         titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.textColor = [Utilities buttonTextColor];
         titleLabel.font = titleFont;
         [self addSubview:titleLabel];
         
@@ -62,6 +61,7 @@
         checkinButton.layer.masksToBounds = YES;
         [checkinButton setTitle:NSLocalizedString(@"Found!", nil) forState:UIControlStateNormal];
         [checkinButton addTarget:self action:@selector(onButton:) forControlEvents:UIControlEventTouchUpInside];
+        [checkinButton setTitleColor:[Utilities buttonTextColor] forState:UIControlStateNormal];
         [self addSubview:checkinButton];
         
         //body
@@ -152,6 +152,7 @@
     checkinButton.layer.masksToBounds = YES;
     [checkinButton setTitle:NSLocalizedString(@"Continue!", nil) forState:UIControlStateNormal];
     [checkinButton addTarget:self action:@selector(onContinueButton:) forControlEvents:UIControlEventTouchUpInside];
+    [checkinButton setTitleColor:[Utilities buttonTextColor] forState:UIControlStateNormal];
     [self addSubview:checkinButton];
     
 }

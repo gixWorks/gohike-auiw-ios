@@ -216,7 +216,8 @@
             startHikeCellButton.layer.masksToBounds = YES;
             
             [startHikeCellButton.titleLabel setAdjustsFontSizeToFitWidth:YES];
-            startHikeCellButton.tintColor = [Utilities buttonTextColor];
+            [startHikeCellButton setTitleColor:[Utilities buttonTextColor] forState:UIControlStateNormal];
+            
             if([route GHwaypoints]){
                 if([[route objectForKey:@"update_available"] boolValue] == YES)
                 {

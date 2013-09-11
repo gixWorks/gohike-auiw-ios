@@ -66,10 +66,6 @@
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<array key="IBUIGestureRecognizers" id="0"/>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">pin.png</string>
-								</object>
 							</object>
 							<object class="IBUILabel" id="57417983">
 								<reference key="NSNextResponder" ref="57607715"/>
@@ -84,7 +80,7 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Congratulations, Explorer!</string>
-								<object class="NSColor" key="IBUITextColor" id="561035030">
+								<object class="NSColor" key="IBUITextColor" id="247466906">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
@@ -96,7 +92,7 @@
 									<int key="type">1</int>
 									<double key="pointSize">24</double>
 								</object>
-								<object class="NSFont" key="IBUIFont" id="809973026">
+								<object class="NSFont" key="IBUIFont" id="887059830">
 									<string key="NSName">HelveticaNeue</string>
 									<double key="NSSize">24</double>
 									<int key="NSfFlags">16</int>
@@ -116,7 +112,7 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">You helped Code for Europe make this app great, share proudly with your friends!</string>
-								<reference key="IBUITextColor" ref="561035030"/>
+								<reference key="IBUITextColor" ref="247466906"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumScaleFactor">0.5</float>
@@ -125,7 +121,7 @@
 								<int key="IBUITextAlignment">1</int>
 								<int key="IBUILineBreakMode">5</int>
 								<reference key="IBUIFontDescription" ref="363475865"/>
-								<reference key="IBUIFont" ref="809973026"/>
+								<reference key="IBUIFont" ref="887059830"/>
 								<double key="preferredMaxLayoutWidth">280</double>
 							</object>
 						</array>
@@ -877,10 +873,10 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="pin.png">{22, 22}</string>
-			<string key="viewbackground.png">{320, 568}</string>
-		</dictionary>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">viewbackground.png</string>
+			<string key="NS.object.0">{320, 568}</string>
+		</object>
 		<bool key="IBDocument.UseAutolayout">YES</bool>
 		<string key="IBCocoaTouchPluginVersion">3742</string>
 	</data>
