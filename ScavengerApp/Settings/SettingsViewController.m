@@ -43,10 +43,9 @@
     [self.tableView setBackgroundView:tablebgView];
     self.title = NSLocalizedString(@"settings_title", @"Settings");
     
-    footers = @[NSLocalizedString(@"footer_cache_settings", @"Inform user they can delete data by pressing button"),
-                         NSLocalizedString(@"footer_social_settings", @"Inform the user they can disconnect from Facebook")];
+    footers = @[NSLocalizedString(@"footer_social_settings", @"Inform the user they can disconnect from Facebook"), NSLocalizedString(@"footer_cache_settings", @"Inform user they can delete data by pressing button")];
 
-    headers = @[NSLocalizedString(@"header_cache_settings", @"Cache Settings"), NSLocalizedString(@"header_social_settings", @"Social Network Settings")];
+    headers = @[NSLocalizedString(@"header_social_settings", @"Social Network Settings"), NSLocalizedString(@"header_cache_settings", @"Cache Settings")];
     
 
     //header and footers styling
@@ -88,17 +87,17 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
         case 0:
-            return 1;
+            return 2;
             break;
         case 1:
-            return 2;
+            return 1;
             break;
         default:
             return 0;
@@ -121,7 +120,7 @@
     UITableViewCell *cell = nil;
     
     switch (indexPath.section) {
-        case 0:
+        case 1:
         {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"A"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -136,7 +135,7 @@
             [cell addSubview:clearCacheButton];
         }
             break;
-        case 1:
+        case 0:
         {
 
             switch (indexPath.row) {
