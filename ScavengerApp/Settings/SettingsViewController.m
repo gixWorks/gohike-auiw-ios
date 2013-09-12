@@ -48,6 +48,12 @@
 
     headers = @[NSLocalizedString(@"header_cache_settings", @"Cache Settings"), NSLocalizedString(@"header_social_settings", @"Social Network Settings")];
     
+
+    //header and footers styling
+    [[UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil] setTextColor:[Utilities appColor]];
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
+
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -102,9 +108,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    
     return [headers objectAtIndex:section];
-
 }
 
 - (NSString*)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
@@ -128,6 +132,7 @@
             UIButton *clearCacheButton = [self makeButtonForCell:cell];
             [clearCacheButton setTitle:NSLocalizedString(@"settings_clear_data", @"Clear downloaded data") forState:UIControlStateNormal];
             [clearCacheButton addTarget:self action:@selector(clearCacheButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+            [clearCacheButton setTitleColor:[Utilities buttonTextColor] forState:UIControlStateNormal];
             [cell addSubview:clearCacheButton];
         }
             break;
@@ -139,6 +144,8 @@
                 {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"B"];
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.backgroundColor = [UIColor clearColor];
+                    cell.textLabel.textColor = [UIColor whiteColor];
                     if (isFacebookLoggedIn) {
                         cell.textLabel.text = facebookUsername;
                     }
@@ -163,6 +170,7 @@
                         [logoutButton setEnabled:NO];
                     }
                     [logoutButton addTarget:self action:@selector(logoutButtonWasPressed:) forControlEvents:UIControlEventTouchUpInside];
+                    [logoutButton setTitleColor:[Utilities buttonTextColor] forState:UIControlStateNormal];
                     [cell addSubview:logoutButton];
                 }
                     break;  
@@ -225,7 +233,6 @@
 
 - (void)clearCacheButtonTapped:(id)sender
 {
-    NSLog(@"Clear cache button tapped");
     [SVProgressHUD show];
 //    //delete all data in cache folder
     [Utilities clearDownloadedData];

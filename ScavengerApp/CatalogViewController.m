@@ -17,6 +17,7 @@
 #import "HelpView.h"
 #import "SIAlertView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SettingsViewController.h"
 
 
 #define kSELECTION_CELL_IDENTIFIER @"SelectionCell"
@@ -59,6 +60,7 @@
     
     //Setup the refreshcontrol
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl setTintColor:[UIColor whiteColor]];
     [refreshControl addTarget:self action:@selector(startRefresh:)
              forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:refreshControl];
@@ -77,7 +79,7 @@
     //buttons
     [self updateNavigationButtons];
     
-//Load catalog
+    //Load catalog
     [self loadCatalogForCity:[[AppState sharedInstance] currentCity].GHid];
 }
 
@@ -93,7 +95,12 @@
 
 - (void)updateNavigationButtons
 {
-    //TODO: here the Settings button?
+    UIButton *settingsBtn = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    [settingsBtn setImage:[UIImage imageNamed:@"19-gear"] forState:UIControlStateNormal];
+    [settingsBtn addTarget:self action:@selector(settingsButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *settingsBarButton = [[UIBarButtonItem alloc] initWithCustomView:settingsBtn];
+    self.navigationItem.leftBarButtonItem = settingsBarButton;
+    
     
     CustomBarButtonViewLeft *helpButton = [[CustomBarButtonViewLeft alloc] initWithFrame:CGRectMake(0, 0, 32, 32)
                                                                                imageName:@"help2"
@@ -106,6 +113,14 @@
 - (void)onBackButton
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (void)settingsButtonTapped:(id)sender
+{
+    SettingsViewController *settingsVC = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    UINavigationController *settingsNavController = [[UINavigationController alloc] initWithRootViewController:settingsVC];
+    [self.navigationController presentViewController:settingsNavController animated:YES completion:^{    }];
 }
 
 - (void)didReceiveMemoryWarning

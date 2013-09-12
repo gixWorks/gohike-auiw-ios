@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Take a Hike!</string>
+	<string>AUIW Hike!</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
@@ -31,16 +31,16 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb547542925309510</string>
+				<string>fb427470784038700</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>39</string>
+	<string>55</string>
 	<key>FacebookAppID</key>
-	<string>547542925309510</string>
+	<string>427470784038700</string>
 	<key>FacebookDisplayName</key>
-	<string>Take a Hike!</string>
+	<string>Take a Hike! Urban Innovation</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>PrivacyPolicyURL</key>

@@ -37,7 +37,7 @@
     gradient.colors = [NSArray arrayWithObjects:(id)[color colorWithAlphaComponent:0.9].CGColor,
                        (id)[color colorWithAlphaComponent:1.0].CGColor,
                        nil];
-    
+    [_playButton setTitleColor:[Utilities buttonTextColor] forState:UIControlStateNormal];
     [_playButton.layer insertSublayer:gradient atIndex:0];
     _playButton.layer.cornerRadius = 5;
     _playButton.layer.masksToBounds = YES;
