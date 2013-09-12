@@ -80,7 +80,7 @@
     [self updateNavigationButtons];
     
     //Load catalog
-    [self loadCatalogForCity:[[AppState sharedInstance] currentCity].GHid];
+    [self loadCatalogForCity:[[AppState sharedInstance] currentCity].GHid ignoreExisting:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -237,14 +237,14 @@
 - (void)startRefresh:(id)sender
 {
     [((UIRefreshControl*)sender) endRefreshing];
-    [self loadCatalogForCity:[[AppState sharedInstance] currentCity].GHid];
+    [self loadCatalogForCity:[[AppState sharedInstance] currentCity].GHid ignoreExisting:YES];
 }
 
-- (void)loadCatalogForCity:(int)city
+- (void)loadCatalogForCity:(int)city ignoreExisting:(BOOL)ignoreExisting
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoadCatalogCompleted:) name:kFinishedLoadingCatalog object:nil];
     [SVProgressHUD showWithStatus:NSLocalizedString(@"Updating routes to play", @"Updating routes to play") maskType:SVProgressHUDMaskTypeBlack];
-    [[GoHikeHTTPClient sharedClient] getCatalogForCity:city];
+    [[GoHikeHTTPClient sharedClient] getCatalogForCity:city ignoreExisting:ignoreExisting];
 }
 
 #pragma mark - Notification handlers

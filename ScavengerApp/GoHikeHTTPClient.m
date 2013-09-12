@@ -92,31 +92,35 @@ NSString* const kFinishedConnectingDevice = @"kFinishedConnectingDevice";
 }
 
 
-- (void)getCatalogForCity:(int)cityID
+- (void)getCatalogForCity:(int)cityID ignoreExisting:(BOOL)ignoreExisting
 {
-    
-    GHCatalog* existingCatalog = [FileUtilities loadCatalogFromFileWithId:cityID];
-    if(existingCatalog){
-        NSDate *lastModifiedDate = [FileUtilities lastModifiedDateForCatalogWithId:cityID];
-        if( abs([lastModifiedDate timeIntervalSinceNow]) > 60*60*24)
-        {
-            //need to redownload catalog
-            //continue execution
-        }
-        else{
-            //catalog is recent enough
-            [[AppState sharedInstance] setCurrentCatalog:existingCatalog];
-            [[AppState sharedInstance] save];
-            NSDictionary *userInfo = @{ @"expectedFiles" : @0};
-            [[NSNotificationCenter defaultCenter] postNotificationName:kFinishedLoadingCatalog object:nil userInfo:userInfo];
-            return;
-        }
+    if(!ignoreExisting){
+        GHCatalog* existingCatalog = [FileUtilities loadCatalogFromFileWithId:cityID];
+        if(existingCatalog){
+            NSDate *lastModifiedDate = [FileUtilities lastModifiedDateForCatalogWithId:cityID];
+            if( abs([lastModifiedDate timeIntervalSinceNow]) > 60*60*24)
+            {
+                //need to redownload catalog
+                //continue execution
+            }
+            else{
+                //catalog is recent enough
+                [[AppState sharedInstance] setCurrentCatalog:existingCatalog];
+                [[AppState sharedInstance] save];
+                NSDictionary *userInfo = @{ @"expectedFiles" : @0};
+                [[NSNotificationCenter defaultCenter] postNotificationName:kFinishedLoadingCatalog object:nil userInfo:userInfo];
+                return;
+            }
 
+        }
     }
     
+    
+    //?profiles=9
+    NSDictionary *params = @{@"profiles" : @9};
     NSString *locale = [Utilities getCurrentLocale];
     NSString *path = [NSString stringWithFormat:@"/api/%@/catalog/%d", locale, cityID];
-    NSMutableURLRequest *catalogRequest = [self requestWithMethod:@"GET" path:path parameters:nil];
+    NSMutableURLRequest *catalogRequest = [self requestWithMethod:@"GET" path:path parameters:params];
     [catalogRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:catalogRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         if([NSJSONSerialization isValidJSONObject:JSON]){ 

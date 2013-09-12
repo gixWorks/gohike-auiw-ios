@@ -13,7 +13,7 @@
 	<key>CFBundleIcons~ipad</key>
 	<dict/>
 	<key>CFBundleIdentifier</key>
-	<string>net.CodeForEurope.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>nl.dezwijger.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -36,7 +36,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>57</string>
+	<string>64</string>
 	<key>FacebookAppID</key>
 	<string>427470784038700</string>
 	<key>FacebookDisplayName</key>
