@@ -282,9 +282,6 @@
            NSDictionary<FBGraphUser> *user,
            NSError *error) {
              if (!error) {
-#if DEBUG
-                 NSLog(@"we got user: %@", user);
-#endif
                  [SSKeychain setPassword:user.name forService:kServiceNameForKeychain account:kAccountNameForKeychainFacebook];
                  [self connectUser:user];
              }
@@ -296,7 +293,7 @@
 {
     @try {
         NSString *username = user.first_name;
-        NSString *FBid = [NSString stringWithFormat:@"%@", user.id];
+        NSString *FBid = [NSString stringWithFormat:@"%@", [user objectForKey:@"id"]];
         NSString *email = [user objectForKey:@"email"];
         NSDate *expirationDate = FBSession.activeSession.accessTokenData.expirationDate;
         NSString *token = FBSession.activeSession.accessTokenData.accessToken;

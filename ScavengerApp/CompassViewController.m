@@ -301,24 +301,12 @@
     [self updateCheckinStatus];
 
     
-//    CGPoint screenCenterProportional = CGPointMake(self.view.frame.size.width / 2, (self.view.frame.size.height / 2) - NAVBAR_HEIGHT - TOP_COMPENSATION);
-//    CGPoint screenCenterProportional = CGPointMake(self.view.frame.size.width / 2, (self.view.frame.size.height / 10 * 6) - NAVBAR_HEIGHT);
-//     CGPoint screenCenterProportional = CGPointMake(self.view.frame.size.width / 2, (self.view.frame.size.height / 20 * 11) - NAVBAR_HEIGHT -TOP_COMPENSATION);
-    CGPoint screenCenterProportional;
-    if (self.view.frame.size.height > 480) {
-        //4 inch
-        screenCenterProportional = CGPointMake(remain.size.width /2, ((remain.size.height/30)*16));
+    CGPoint viewCenterPoint = CGPointMake([[self view] center].x, [[self view] center].y);
 
-    }
-    else{
-        screenCenterProportional = CGPointMake(remain.size.width /2, ((remain.size.height/30)*16)- NAVBAR_HEIGHT);
-        
-        
-    }
-    
+    CGPoint screenCenterProportional = viewCenterPoint;
     CGRect compassRect = CGRectMake(0, 0, COMPASS_SIZE, COMPASS_SIZE);
     [compass setFrame:compassRect];
-    [compass setCenter:screenCenterProportional];
+    [compass setCenter:viewCenterPoint];
         
     CGRect gridRect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - STATUS_HEIGHT);
 

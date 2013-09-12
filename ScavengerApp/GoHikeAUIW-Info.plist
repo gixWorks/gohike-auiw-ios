@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>AUIW Hike!</string>
+	<string>Stadexpeditie</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
@@ -36,7 +36,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>100</string>
+	<string>126</string>
 	<key>FacebookAppID</key>
 	<string>427470784038700</string>
 	<key>FacebookDisplayName</key>
