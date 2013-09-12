@@ -40,7 +40,7 @@
 //#define DEGREES_TO_RADIANS(x) (M_PI * x / 180.0)
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 #define STATUS_HEIGHT 50
-#define NAVBAR_HEIGHT 44
+#define NAVBAR_HEIGHT 50
 
 @interface CompassViewController ()
 @property (nonatomic, strong) IBOutlet UIImageView *arrow;
@@ -301,8 +301,20 @@
     [self updateCheckinStatus];
 
     
-//    CGPoint screenCenter = CGPointMake(self.view.frame.size.width / 2, (self.view.frame.size.height / 2) - NAVBAR_HEIGHT);
-    CGPoint screenCenterProportional = CGPointMake(self.view.frame.size.width / 2, (self.view.frame.size.height / 10 * 6) - NAVBAR_HEIGHT);
+//    CGPoint screenCenterProportional = CGPointMake(self.view.frame.size.width / 2, (self.view.frame.size.height / 2) - NAVBAR_HEIGHT - TOP_COMPENSATION);
+//    CGPoint screenCenterProportional = CGPointMake(self.view.frame.size.width / 2, (self.view.frame.size.height / 10 * 6) - NAVBAR_HEIGHT);
+//     CGPoint screenCenterProportional = CGPointMake(self.view.frame.size.width / 2, (self.view.frame.size.height / 20 * 11) - NAVBAR_HEIGHT -TOP_COMPENSATION);
+    CGPoint screenCenterProportional;
+    if (self.view.frame.size.height > 480) {
+        //4 inch
+        screenCenterProportional = CGPointMake(remain.size.width /2, ((remain.size.height/30)*16));
+
+    }
+    else{
+        screenCenterProportional = CGPointMake(remain.size.width /2, ((remain.size.height/30)*16)- NAVBAR_HEIGHT);
+        
+        
+    }
     
     CGRect compassRect = CGRectMake(0, 0, COMPASS_SIZE, COMPASS_SIZE);
     [compass setFrame:compassRect];
@@ -426,5 +438,6 @@
         [self.navigationController popViewControllerAnimated:true];
     }
 }
+
 
 @end
