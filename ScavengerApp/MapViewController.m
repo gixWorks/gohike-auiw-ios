@@ -66,7 +66,7 @@
             {
                 pin.current = NO;
             }
-            if ([waypoint GHrank] > [[[AppState sharedInstance] activeWaypoint] GHrank])
+            if ([[waypoint objectForKey:@"visited"] boolValue] != YES)
             {
                 pin.visited = NO;
             }
