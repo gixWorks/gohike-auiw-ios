@@ -1,6 +1,6 @@
 ACKNOWLEDGEMENTS
 
-DoveSiButta uses several open source 3rd-party components.
+This app uses several open source 3rd-party components.
 You need to keep this file in your resource bundle to satisfy the licenses.
 Adding this text file to your about screen under "Attribution" would be a nice gesture, but is not required.
 
